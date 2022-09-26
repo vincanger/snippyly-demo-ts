@@ -15,8 +15,7 @@ import {
 } from '@chakra-ui/react';
 import { FiHome, FiTrendingUp, FiCompass, FiStar, FiSettings, FiMenu } from 'react-icons/fi';
 import { IconType } from 'react-icons';
-import { ReactText } from 'react';
-import SnippylyIcon from '../logo_colored_white';
+import SnippylyIcon from '../utils/SnipplyIcon';
 import Toolbar from './Toolbar';
 
 interface LinkItemProps {

@@ -37,7 +37,6 @@ const NavItem = ({ icon, href, children, ...rest }: NavItemProps) => {
         borderRadius='lg'
         role='group'
         cursor='pointer'
-        // bg='gray.900'
         _hover={{
           bg: 'orange.400',
           color: 'white',

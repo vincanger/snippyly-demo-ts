@@ -9,12 +9,28 @@ import Main from './components/Main';
 import About from './components/About';
 
 /**
- *  🤝 💬 📍 SNIPPYLY FUN
+ *  🤝 💬 📍 SNIPPYLY FUN  
  */
+import { Snippyly } from '@snippyly/sdk';
+import { SnippylyContext } from './context/SnippylyContext';
+import { API_KEY } from './utils/constants';
 
 function App() {
+  const [client, setClient] = useState<Snippyly>(null as any);
+
+  useEffect(() => {
+    initSnippyly();
+  }, []);
+
+  const initSnippyly = async () => {
+    // Add your Api Key here
+    const client = await Snippyly.init(API_KEY);
+    setClient(client);
+    client.setDocumentId('tutorials-are-fun-999');
+  };
+
   return (
-    <>
+    <SnippylyContext.Provider value={{ client }}>
       <SideBar>
         <Box p={8} maxW='1000px' minW='320px' m='0 auto'>
           <PageNav />
@@ -24,19 +40,22 @@ function App() {
           </Routes>
         </Box>
       </SideBar>
-
-    </>
+      <snippyly-cursor></snippyly-cursor>
+      <snippyly-comments></snippyly-comments>
+      <snippyly-comment-tool>
+        <Box style={{ position: 'fixed', right: '25px', bottom: '24px' }}>
+          <Tooltip label='Click to place comment anywhere!' closeOnClick={true} fontSize='md' offset={[-170, -10]}>
+            <span>
+              <Icon as={FaComments} color='yellow.400' boxSize='2rem' />
+            </span>
+          </Tooltip>
+        </Box>
+      </snippyly-comment-tool>
+    </SnippylyContext.Provider>
   );
 }
 
 export default App;
-
-
-
-
-
-
-
 
 
 /**

@@ -12,11 +12,6 @@ import { CheckIcon, CloseIcon, EditIcon } from '@chakra-ui/icons';
 import Draggable from 'react-draggable';
 import sx from '../utils/styles';
 
-// interface EditableControlsProps {
-//   setEditMode: React.Dispatch<React.SetStateAction<string>>;
-// }
-
-
 function EditablePost() {
   const [editMode, setEditMode] = useState<string>('viewing');
   
@@ -25,12 +20,8 @@ function EditablePost() {
     console.log('editMode', editMode);
   }, [editMode]);
   
-  function EditableControls(
-    // { setEditMode }: EditableControlsProps
-    ) {
+  function EditableControls(    ) {
     const { isEditing, getSubmitButtonProps, getCancelButtonProps, getEditButtonProps } = useEditableControls();
-  
-    // useEffect(() => {
     //   console.log('isEditing', isEditing);
     //   if (isEditing) {
     //     setEditMode('editing');
