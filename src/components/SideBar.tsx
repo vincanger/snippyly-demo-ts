@@ -24,7 +24,6 @@ interface LinkItemProps {
   icon: IconType;
 }
 const LinkItems: Array<LinkItemProps> = [
-  { name: 'Home', icon: FiHome },
   { name: 'Components', icon: FiTrendingUp },
   { name: 'Pages', icon: FiCompass },
   { name: 'Templates', icon: FiStar },
@@ -35,7 +34,7 @@ export default function SimpleSidebar({ children }: { children: ReactNode }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <Box minH='100vh'>
-      <SidebarContent onClose={() => onClose} display={{ base: 'none', md: 'block' }} />
+      <SidebarContent onClose={() => onClose} backgroundColor={'gray.800'} display={{ base: 'none', md: 'block' }} />
       <Drawer
         autoFocus={false}
         isOpen={isOpen}
@@ -71,7 +70,7 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
           builder
         </Text>
       </Flex>
-      {/* <Toolbar /> */}
+      <Toolbar />
       <Divider my={5}/>
       {LinkItems.map((link) => (
         <NavItem key={link.name} icon={link.icon}>

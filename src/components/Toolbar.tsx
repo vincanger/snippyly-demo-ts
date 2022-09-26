@@ -1,74 +1,58 @@
 import React, { useEffect, useState } from 'react';
 import { useSnippylyClient } from '../context/SnippylyContext';
-import { Box, Button, HStack, VStack, Divider, Flex, Text } from '@chakra-ui/react';
+import { Box, Button, HStack, VStack, Flex, Text, Divider } from '@chakra-ui/react';
+
+import { Users } from '../Users';
+import { PresenceUser } from '@snippyly/sdk/types';
 
 function Toolbar() {
   const [selectedUser, setSelectedUser] = useState<any>(null);
-  const users = [
-    {
-      userId: '1',
-      name: 'John Smith',
-      photoUrl: '',
-      email: 'john@trysnippyly.com',
-      plan: 'free',
-      groupId: '',
-      contacts: [
-        {
-          userId: '2',
-          name: 'Maria Garcia',
-          email: 'maria@trysnippyly.com',
-        },
-      ],
-    },
-    {
-      userId: '2',
-      name: 'Maria Garcia',
-      photoUrl: '',
-      email: 'maria@trysnippyly.com',
-      plan: 'paid',
-      groupId: '',
-      contacts: [
-        {
-          userId: '1',
-          name: 'John Smith',
-          email: 'john@trysnippyly.com',
-        },
-      ],
-    },
-  ];
+  const [presenceUsers, setPresenceUsers] = useState<any>([]);
+  const users = Users;
+  const location = { key: 'home' }; // set your custom object here
+  const locationJson = JSON.stringify(location);
 
   const { client } = useSnippylyClient();
 
   useEffect(() => {
-    console.log('selectedUser', selectedUser);
     if (localStorage.getItem('user')) {
       setSelectedUser(JSON.parse(localStorage.getItem('user')!));
     }
   }, []);
 
   useEffect(() => {
-    console.log('2nd useeffect', selectedUser);
-    
     if (selectedUser && client) {
-      console.log('selected user', selectedUser);
-      console.log('client', client);
       identifySnippyly();
+      // setLocation();
+      getOnlineUsersOnCurrentDocument();
     }
   }, [selectedUser && client]);
+
+  const setLocation = async () => {
+    if (client) {
+      client.setLocation(location);
+    }
+  };
 
   const identifySnippyly = async () => {
     if (client) {
       client
         .identify(selectedUser)
         .then((res) => {
-          // User login successful
-          console.log('login success', selectedUser);
+          console.log('logged in to snippyly client: ', selectedUser);
+          
         })
         .catch((err) => {
-          // User login failure
-          console.log('login error', err);
+          console.log('snippyly client error: ', err);
         });
     }
+  };
+
+  const getOnlineUsersOnCurrentDocument = () => {
+    const presenceElement = client.getPresenceElement();
+    presenceElement.getOnlineUsersOnCurrentDocument().subscribe((_presenceUsers: PresenceUser[] | null) => {
+      setPresenceUsers(_presenceUsers || []);
+    });
   };
 
   const signIn = (user: any): void => {
@@ -88,9 +72,8 @@ function Toolbar() {
 
   return (
     <>
-      <snippyly-presence></snippyly-presence>
-      <Flex mb={3} direction='column' alignItems='center'>
-        <HStack>
+      <Flex mb={3} direction='column'>
+        <Flex justifyContent={'center'} mb={3}>
           {selectedUser ? (
             <VStack>
               <Text>Hi, {selectedUser?.name}</Text>
@@ -110,7 +93,13 @@ function Toolbar() {
               })}
             </VStack>
           )}
-        </HStack>
+        </Flex>
+        {presenceUsers.length > 0 && (
+          <HStack mx={4} px={4} justifyContent={'flex-start'}>
+            <Text fontSize={'2xl'}>🤝 </Text>
+            <snippyly-presence></snippyly-presence>
+          </HStack>
+        )}
       </Flex>
     </>
   );

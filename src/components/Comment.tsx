@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { VStack, Textarea, Button } from '@chakra-ui/react';
 import Draggable from 'react-draggable';
 import sx from '../utils/styles';
