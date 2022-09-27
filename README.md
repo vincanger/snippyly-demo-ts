@@ -1,4 +1,4 @@
-# Getting Started with Create React App
+# Getting Started with 🤝 Snippyly 🎉
 
 This is a demo app to show you how to install and use Snippyly's basic features ✂️
 
