@@ -30,7 +30,7 @@ function App() {
     const commentElement = client.getCommentElement();
     commentElement.enableTextComments(true);
 
-    // To enable live selection feature
+    // To disable live selection feature
     const selectionElement = client.getSelectionElement();
     selectionElement.enableLiveSelection(false);
 

@@ -1,9 +1,6 @@
 import { Box, Heading, Text } from '@chakra-ui/react';
-import { useSnippylyClient } from '../context/SnippylyContext';
 
 export default function PostHeader() {
-  const { client } = useSnippylyClient();
-
   return (
     <Box m={3}>
       <Heading>About</Heading>

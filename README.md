@@ -1,4 +1,4 @@
-# Snippyly SDK React tutorial with TypeScript
+# Getting Started with Create React App
 
 This is a demo app to show you how to install and use Snippyly's basic features ✂️
 

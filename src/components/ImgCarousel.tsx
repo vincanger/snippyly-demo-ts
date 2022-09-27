@@ -40,7 +40,6 @@ export default function Carousel() {
   return (
     <Draggable axis='y' nodeRef={nodeRef}>
       <Box
-        // position={'relative'}
         height={'300px'}
         overflow={'hidden'}
         style={sx}
