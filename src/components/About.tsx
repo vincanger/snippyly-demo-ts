@@ -1,6 +1,4 @@
-import React, { useEffect } from 'react';
-import { Routes, Router } from 'react-router-dom';
-import { Box, HStack, Heading, Text, Link } from '@chakra-ui/react';
+import { Box, Heading, Text } from '@chakra-ui/react';
 import { useSnippylyClient } from '../context/SnippylyContext';
 
 export default function PostHeader() {

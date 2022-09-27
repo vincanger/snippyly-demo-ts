@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import { ReactNode } from 'react';
 import {
   Box,
   CloseButton,
@@ -13,7 +13,7 @@ import {
   FlexProps,
   Divider,
 } from '@chakra-ui/react';
-import { FiHome, FiTrendingUp, FiCompass, FiStar, FiSettings, FiMenu } from 'react-icons/fi';
+import { FiHome, FiTrendingUp, FiCompass, FiStar, FiSettings } from 'react-icons/fi';
 import { IconType } from 'react-icons';
 import SnippylyIcon from '../utils/SnipplyIcon';
 import Toolbar from './Toolbar';
@@ -70,14 +70,12 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
         </Text>
       </Flex>
       <Toolbar />
-      <Divider my={5}/>
+      <Divider my={5} />
       {LinkItems.map((link) => (
         <NavItem key={link.name} icon={link.icon}>
           {link.name}
         </NavItem>
-        
       ))}
-
     </Box>
   );
 };
@@ -85,7 +83,6 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
 interface NavItemProps extends FlexProps {
   icon?: IconType;
   children: any;
-
 }
 const NavItem = ({ icon, children, ...rest }: NavItemProps) => {
   return (

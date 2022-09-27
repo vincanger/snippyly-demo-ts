@@ -1,4 +1,4 @@
-import { Box, HStack, Link, FlexProps, Flex, Icon, Divider } from '@chakra-ui/react';
+import { HStack, Link, FlexProps, Flex, Icon, Divider } from '@chakra-ui/react';
 import { IconType } from 'react-icons';
 import { FiEye, FiHome } from 'react-icons/fi';
 

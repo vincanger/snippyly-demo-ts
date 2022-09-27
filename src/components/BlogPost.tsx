@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import {
   ButtonGroup,
   IconButton,
@@ -14,22 +14,12 @@ import sx from '../utils/styles';
 
 function EditablePost() {
   const [editMode, setEditMode] = useState<string>('viewing');
-  
+
   const nodeRef = React.useRef(null);
-  useEffect(() => {
-    console.log('editMode', editMode);
-  }, [editMode]);
-  
-  function EditableControls(    ) {
+
+  function EditableControls() {
     const { isEditing, getSubmitButtonProps, getCancelButtonProps, getEditButtonProps } = useEditableControls();
-    //   console.log('isEditing', isEditing);
-    //   if (isEditing) {
-    //     setEditMode('editing');
-    //   } else {
-    //     setEditMode('viewing');
-    //   }
-    // }, [isEditing]);
-  
+
     return isEditing ? (
       <ButtonGroup justifyContent='center' size='sm'>
         <IconButton icon={<CheckIcon />} {...getSubmitButtonProps()} aria-label='submit' />

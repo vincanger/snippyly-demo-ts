@@ -10,6 +10,7 @@ function Toolbar() {
   const { client } = useSnippylyClient();
   const users = Users;
 
+  // identify your logged in user for snippyly-presence!
   const identifySnippyly = async () => {
     if (client) {
       client
@@ -23,6 +24,7 @@ function Toolbar() {
     }
   };
 
+  // subscribe to the snippyly users for added functionality ;)
   const getOnlineUsersOnCurrentDocument = () => {
     const presenceElement = client.getPresenceElement();
     presenceElement.getOnlineUsersOnCurrentDocument().subscribe((_presenceUsers: PresenceUser[] | null) => {
@@ -79,6 +81,7 @@ function Toolbar() {
           </VStack>
         )}
       </Flex>
+      {/* show this component only when a user is signed in and active */}
       {presenceUsers.length > 0 && (
         <HStack mx={4} px={4} justifyContent={'flex-start'}>
           <Text fontSize={'2xl'}>🤝 </Text>

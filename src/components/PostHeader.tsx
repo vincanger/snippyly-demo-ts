@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Button, HStack, Heading, Flex, Text } from '@chakra-ui/react';
+import { Box, HStack, Heading, Text } from '@chakra-ui/react';
 import Draggable from 'react-draggable';
 import sx from '../utils/styles';
 

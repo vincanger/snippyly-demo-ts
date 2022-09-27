@@ -1,4 +1,4 @@
-import { Box, HStack, Heading, Text, Link, VStack } from '@chakra-ui/react';
+import { Box, VStack } from '@chakra-ui/react';
 import ImgCarousel from './ImgCarousel';
 import PostHeader from './PostHeader';
 import BlogPost from './BlogPost';
